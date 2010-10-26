@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+            <FilterDrupal_Connection>
+              <connection server="localhost" dbname="drupal6" user="drupal" password="fedoraAdmin" port="3306">
+                <sql>
+                  <!--Different sql statement for each connection.  This is for drupal multisites that are setup using one database with table prefixes.  We don't do this but some people might.-->
+                  SELECT distinct u.uid as userid, u.name as Name, u.pass as Pass, r.name as role FROM drupal6.users u,drupal6.role r, drupal6.users_roles where u.name=? and u.pass=? and r.rid=users_roles.rid and u.uid=users_roles.uid;
+                </sql>
+              </connection>
+
+            </FilterDrupal_Connection>
